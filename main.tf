@@ -3,12 +3,12 @@ data "azurerm_client_config" "current" {}
 data "azurerm_subnet" "default_subnet_data" {
   name                 = var.subnet1
   virtual_network_name = azurerm_virtual_network.Hub_Network.name
-  resource_group_name  = azurerm_resource_group.RG.name
+  resource_group_name  = azurerm_resource_group.RG.name 
 }
 
 data "azurerm_key_vault" "bjgsecrets" {
   name                = var.secret_vault_name
-  resource_group_name = var.secrets_rg_name
+  resource_group_name = var.secrets_rg_name 
 }
 data "azurerm_key_vault_secret" "linux1_password" {
   name         = "linux1-password"
