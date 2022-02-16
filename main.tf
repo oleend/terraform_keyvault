@@ -6,19 +6,6 @@ data "azurerm_subnet" "default_subnet_data" {
   resource_group_name  = azurerm_resource_group.RG.name 
 }
 
-data "azurerm_key_vault" "bjgsecrets" {
-  name                = var.secret_vault_name
-  resource_group_name = var.secrets_rg_name 
-}
-data "azurerm_key_vault_secret" "linux1_password" {
-  name         = "linux1-password"
-  key_vault_id = data.azurerm_key_vault.bjgsecrets.id
-}
-data "azurerm_key_vault_secret" "linux1_username" {
-  name         = "linux1-username"
-  key_vault_id = data.azurerm_key_vault.bjgsecrets.id
-}
-
 resource "azurerm_resource_group" "RG" {
   name     = var.RG_name
   location = var.location
@@ -104,8 +91,8 @@ resource "azurerm_virtual_machine" "linux1" {
   }
   os_profile {
     computer_name  = var.linux1_os_profile_computer_name
-    admin_username = data.azurerm_key_vault_secret.linux1_username.value
-    admin_password = data.azurerm_key_vault_secret.linux1_password.value 
+    admin_username = "azureuser"
+    admin_password = "0987^%$#poiuYTRE" 
   }
   os_profile_linux_config {
     disable_password_authentication = false
