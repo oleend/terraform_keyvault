@@ -1,8 +1,8 @@
 #Service Principle Creds
-subscription_id = "233750e3-a3da-4a8b-bc2c-b1675731d161"
-client_id       = "86744257-b5a5-4779-a1c5-cfa28e046502"
-client_secret   = "RvM7Q~3YWPT6aH1umYjn.QQoqJ-BB7s2jBsup"
-tenant_id       = "57a73478-a62d-467f-a468-1b19ddcfb17f"
+subscription_id = ""
+client_id       = ""
+client_secret   = ""
+tenant_id       = ""
 
 #resource group variables
 RG_name  = "terraform_build2"
