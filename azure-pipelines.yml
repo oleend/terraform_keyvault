@@ -1,0 +1,35 @@
+pool:
+  name: Azure Pipelines
+#Your build pipeline references an undefined variable named ‘username’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘username’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named ‘password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+  displayName: 'Install Terraform latest'
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+  displayName: 'Terraform : init'
+  inputs:
+    backendServiceArm: 'trainer_sandbox (233750e3-a3da-4a8b-bc2c-b1675731d161)'
+    backendAzureRmResourceGroupName: storage
+    backendAzureRmStorageAccountName: bjgstorage999
+    backendAzureRmContainerName: terraform
+    backendAzureRmKey: 'keyvault_IaC'
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+  displayName: 'Terraform : plan'
+  inputs:
+    command: plan
+    commandOptions: '`-var="username=$(username)" -var="password=$(password)"'
+    environmentServiceNameAzureRM: 'trainer_sandbox (233750e3-a3da-4a8b-bc2c-b1675731d161)'
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
+  displayName: 'Terraform : apply'
+  inputs:
+    command: apply
+    commandOptions: '''-var="username=$(username)" -var="password=$(password)"'''
+    environmentServiceNameAzureRM: 'trainer_sandbox (233750e3-a3da-4a8b-bc2c-b1675731d161)'
+
+
