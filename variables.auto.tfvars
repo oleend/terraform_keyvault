@@ -1,7 +1,5 @@
-
-
 #resource group variables
-RG_name  = "terraform_build2"
+RG_name  = "terraform_build"
 location = "eastus"
 
 #Networking Variables
