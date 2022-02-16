@@ -1,8 +1,4 @@
-#Service Principle Creds
-subscription_id = ""
-client_id       = ""
-client_secret   = ""
-tenant_id       = ""
+
 
 #resource group variables
 RG_name  = "terraform_build2"
@@ -49,4 +45,4 @@ security_rule_destination_address_prefix = "*"
 
 #Vault Variables
 secrets_rg_name   = "secrets"
-secret_vault_name = "bjgsecretvault"
+secret_vault_name = "bjgsecrets"
